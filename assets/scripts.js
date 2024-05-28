@@ -1,4 +1,11 @@
 $(document).ready(function() {
+    // Test if modal function is available
+    if ($.fn.modal) {
+        console.log("Bootstrap modal is available.");
+    } else {
+        console.log("Bootstrap modal is NOT available.");
+    }
+    
     $('.gallery').mauGallery({
         columns: {
             xs: 1,

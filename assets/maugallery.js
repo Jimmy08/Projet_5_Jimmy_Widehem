@@ -43,7 +43,7 @@
   $.fn.mauGallery.defaults = {
     columns: 3,
     lightBox: true,
-    lightboxId: null,
+    lightboxId: "galleryLightbox",
     showTags: true,
     tagsPosition: "bottom",
     navigation: true
@@ -117,7 +117,7 @@
       $(`#${lightboxId}`)
         .find(".lightboxImage")
         .attr("src", element.attr("src"));
-      $(`#${lightboxId}`).modal("toggle");
+      $(`#${lightboxId}`).modal("show");
     },
     prevImage() {
       let activeImage = null;
@@ -146,17 +146,17 @@
         });
       }
       let index = 0,
-        next = null;
+        prev = null;
 
       $(imagesCollection).each(function(i) {
         if ($(activeImage).attr("src") === $(this).attr("src")) {
-          index = i ;
+          index = i - 1;
         }
       });
-      next =
+      prev =
         imagesCollection[index] ||
         imagesCollection[imagesCollection.length - 1];
-      $(".lightboxImage").attr("src", $(next).attr("src"));
+      $(".lightboxImage").attr("src", $(prev).attr("src"));
     },
     nextImage() {
       let activeImage = null;
@@ -189,7 +189,7 @@
 
       $(imagesCollection).each(function(i) {
         if ($(activeImage).attr("src") === $(this).attr("src")) {
-          index = i;
+          index = i + 1;
         }
       });
       next = imagesCollection[index] || imagesCollection[0];
@@ -207,7 +207,7 @@
                                 ? '<div class="mg-prev" style="cursor:pointer;position:absolute;top:50%;left:-15px;background:white;"><</div>'
                                 : '<span style="display:none;" />'
                             }
-                            <img class="lightboxImage img-fluid" alt="Contenu de l'image affichée dans la modale au clique"/>
+                            <img class="lightboxImage img-fluid" alt="Contenu de l\'image affichée dans la modale au clique"/>
                             ${
                               navigation
                                 ? '<div class="mg-next" style="cursor:pointer;position:absolute;top:50%;right:-15px;background:white;}">></div>'
@@ -240,7 +240,7 @@
         return;
       }
       $(".active-tag").removeClass("active active-tag");
-      $(this).addClass("active-tag");
+      $(this).addClass("active active-tag");
 
       var tag = $(this).data("images-toggle");
 
