@@ -1,0 +1,25 @@
+{
+  "name": "nina-carducci-dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "npm run minify:js && npm run minify:css",
+    "minify:js": "terser assets/scripts.js -o assets/scripts.min.js --compress --mangle",
+    "minify:css": "postcss assets/style.css -o assets/style.min.css"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "terser": "^5.10.0",
+    "postcss-cli": "^8.3.1",
+    "autoprefixer": "^10.2.6",
+    "cssnano": "^4.1.11"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
