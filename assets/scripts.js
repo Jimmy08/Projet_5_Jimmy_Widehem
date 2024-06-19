@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    // Test if modal function is available
+
     if ($.fn.modal) {
         console.log("Bootstrap modal is available.");
     } else {

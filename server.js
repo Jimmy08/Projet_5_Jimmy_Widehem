@@ -5,7 +5,6 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3003;
 
-// Activer la compression
 app.use(compression({
   threshold: 0,
   filter: (req, res) => {
@@ -17,10 +16,8 @@ app.use(compression({
   }
 }));
 
-// Servir les fichiers statiques depuis le dossier "assets"
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
-// Servir le fichier index.html à la racine
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
